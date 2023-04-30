@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#disable wifi powersafe mode
+LOC="/etc/NetworkManager/conf.d/wifi-powersave.conf"
+echo "the following file has been created $LOC."
+echo -e "[connection]\nwifi.powersave = 2" 
+echo -e "\n"
+echo "restarting networkManager service..."
+sleep 1
+sudo systemctl restart NetworkManager 
+sleep 3
+
+#installing yay
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-git.git
+cd yay-git
+makepkg -si --noconfirm
+cd ..
+
+echo "updating the yay database..."
+yay -Suy --noconfirm 
+
+#function that will test for a package and if not found it will attempt to install it
+install_software() {
+    #first lets see if the package is there
+    if yay -Q $1 &>> /dev/null ; then
+        echo "$1 is already installed."
+    else
+        #no package found so installing
+        echo -e "now installing $1 ..."
+        yay -S --noconfirm $1
+        #test to make sure package installed
+        if yay -Q $1 &>> /dev/null ; then
+            echo -e "$1 was installed."
+        else
+            #if this is hit then a package is missing
+            echo -e "$1 install had failed"
+            exit
+        fi
+    fi
+}
+
+#setup nvidia
+echo -e "nvidia setup stage"
+for SOFTWR in linux-headers nvidia-dkms qt5-wayland qt5ct libva libva-nvidia-driver-git pipewire wireplumber
+do
+    install_software $SOFTWR
+done
+
+#update config
+echo "updating config for nvidia"
+
+sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+sudo mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.img
+echo "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf
+
+echo "reboot and run the installation script"
+
