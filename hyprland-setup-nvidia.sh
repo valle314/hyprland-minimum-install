@@ -11,7 +11,7 @@ sudo systemctl restart NetworkManager
 sleep 3
 
 #installing yay
-pacman -S --needed git base-devel
+sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
 makepkg -si --noconfirm
