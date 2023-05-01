@@ -39,11 +39,13 @@ sudo make install
 sudo cp -R build/Hyprland /usr/bin/
 sudo cp -R hyprctl/hyprctl /usr/bin/
 sudo cp -R subprojects/wlroots/build/libwlroots.so.12032 /usr/lib/
-sudo cp -R examples/hyprland.desktop /usr/share/wayland-sessions/
-mkdir ~/.config/hypr
 cd ..
 
+sudo mkdir /usr/share/wayland-sessions/
+sudo mkdir ~/.config/hypr/
+sudo cp -R hypr/hyprland.desktop /usr/share/wayland-sessions/
 sudo cp -R hypr/hyprland.conf ~/.config/hypr/
+sudo cp -R hypr/xdg-portal-hyprland ~/.config/hypr/
 
 #installing essential packages
 echo "installing must haves"
@@ -71,9 +73,5 @@ done
 echo "enabling the SDDM service"
 sudo systemctl enable sddm 
 sleep 2
-     
-#update some configs
-cp hypr/.start-hypr-nvidia ~/.start-hypr-nvidia
-sudo sed -i 's/Exec=Hyprland/Exec=\/home\/'$USER'\/.start-hypr-nvidia/' /usr/share/wayland-sessions/hyprland.desktop
 
 echo "done!"
