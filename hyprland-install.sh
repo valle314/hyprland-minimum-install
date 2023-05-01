@@ -73,7 +73,7 @@ sudo systemctl enable sddm
 sleep 2
      
 #update some configs
-cp .start-hypr-nvidia ~/.start-hypr-nvidia
+cp hypr/.start-hypr-nvidia ~/.start-hypr-nvidia
 sudo sed -i 's/Exec=Hyprland/Exec=\/home\/'$USER'\/.start-hypr-nvidia/' /usr/share/wayland-sessions/hyprland.desktop
 
 sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia_drm.modeset=1"/' /usr/share/wayland-sessions/hyprland.desktop
