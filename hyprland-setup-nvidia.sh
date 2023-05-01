@@ -55,4 +55,3 @@ sudo mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.
 echo "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf
 
 echo "reboot and run the installation script"
-
