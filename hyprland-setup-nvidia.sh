@@ -1,15 +1,5 @@
 #!/bin/bash
 
-#disable wifi powersafe mode
-LOC="/etc/NetworkManager/conf.d/wifi-powersave.conf"
-echo "the following file has been created $LOC."
-echo -e "[connection]\nwifi.powersave = 2" 
-echo -e "\n"
-echo "restarting networkManager service..."
-sleep 1
-sudo systemctl restart NetworkManager 
-sleep 3
-
 #installing yay
 sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-git.git
@@ -53,5 +43,14 @@ echo "updating config for nvidia"
 sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
 sudo mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.img
 echo "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf
+
+#disable wifi powersafe mode
+LOC="/etc/NetworkManager/conf.d/wifi-powersave.conf"
+echo "the following file has been created $LOC."
+echo -e "[connection]\nwifi.powersave = 2" 
+echo -e "\n"
+echo "restarting networkManager service..."
+sleep 1
+sudo systemctl restart NetworkManager 
 
 echo "reboot and run the installation script"
