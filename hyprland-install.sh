@@ -49,7 +49,7 @@ sudo cp -R hypr/xdg-portal-hyprland ~/.config/hypr/
 
 #installing essential packages
 echo "installing must haves"
-for SOFTWR in kitty jq mako xdg-desktop-portal-hyprland-git qt6-wayland sddm-git 
+for SOFTWR in alacritty jq dunst xdg-desktop-portal-hyprland-git qt6-wayland sddm-git polkit-kde-agent
 do
        install_software $SOFTWR 
 done
