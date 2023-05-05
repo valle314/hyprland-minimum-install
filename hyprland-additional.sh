@@ -27,3 +27,5 @@ do
        install_software $SOFTWR 
 done
 
+#copy dots
+sudo cp -R additional-dots/alacritty ~/.config/
