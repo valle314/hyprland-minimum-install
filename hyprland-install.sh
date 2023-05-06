@@ -22,7 +22,7 @@ install_software() {
 
 #install all dependencies for hyprland
 echo -e "installing dependencies for hyprland"
-for SOFTWR in gdb ninja gcc cmake meson libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info
+for SOFTWR in gdb ninja gcc cmake meson libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info xdg-desktop-portal-hyprland-git qt6-wayland 
 do
        install_software $SOFTWR 
 done
@@ -33,9 +33,18 @@ yay -Syu --devel
 #building hyprland
 echo "building hyprland"
 git clone --recursive https://github.com/hyprwm/Hyprland
+
+#nvidia patch
+sudo rm Hyprland/subprojects/wlroots/render/gles2/renderer.c
+sudo rm Hyprland/subprojects/wlroots/types/output/render.c
+
+sudo cp -R wlrootspatch/renderer.c Hyprland/subprojects/wlroots/render/gles2/
+sudo cp -R wlrootspatch/render.c Hyprland/subprojects/wlroots/types/output/
+
 cd Hyprland
 sudo make install
 
+echo "copy files and configs"
 sudo cp -R build/Hyprland /usr/bin/
 sudo cp -R hyprctl/hyprctl /usr/bin/
 sudo cp -R subprojects/wlroots/build/libwlroots.so.12032 /usr/lib/
@@ -46,10 +55,12 @@ sudo mkdir ~/.config/hypr/
 sudo cp -R hypr/hyprland.desktop /usr/share/wayland-sessions/
 sudo cp -R hypr/hyprland.conf ~/.config/hypr/
 sudo cp -R hypr/xdg-portal-hyprland ~/.config/hypr/
+echo "done with copy"
+sleep 2
 
 #installing essential packages
 echo "installing must haves"
-for SOFTWR in alacritty jq dunst xdg-desktop-portal-hyprland-git qt6-wayland sddm-git polkit-kde-agent
+for SOFTWR in alacritty jq mako sddm-git polkit-kde-agent
 do
        install_software $SOFTWR 
 done
