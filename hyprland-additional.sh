@@ -22,7 +22,7 @@ install_software() {
 
 #installing packages for better usability
 echo "installing additional packages"
-for SOFTWR in grim slurp swappy fuzzel wlogout hyprpaper waybar-hyprland-git copyq pavucontrol noto-fonts-emoji
+for SOFTWR in grim slurp swappy fuzzel wlogout hyprpaper copyq pavucontrol 
 do
        install_software $SOFTWR 
 done
