@@ -21,8 +21,24 @@ install_software() {
 }
 
 #installing packages for better usability
+#grim, slurp and swappy: for screenshots
+#fuzzel: fuzzy app launcher
+#wlogout: logout screen
+#hyprpaper: for backgrounds
+#copyq: for clipboard
+#pavucontrol: audio
+#pamixer: audio notifications
+#xdg-user-dir: user directories(downloads, pictures, ...)
+#pamixer: pulseaudio command line mixer
+
+
+#not used:
+#gvfs: Virtual filesystem implementation for GIO
+#thunar-archive-plugin: Adds archive operations to the Thunar file context menus
+#file-roller: Create and modify archives
+
 echo "installing additional packages"
-for SOFTWR in grim slurp swappy fuzzel wlogout hyprpaper copyq pavucontrol 
+for SOFTWR in grim slurp swappy fuzzel wlogout hyprpaper copyq pavucontrol pamixer xdg-user-dirs
 do
        install_software $SOFTWR 
 done
