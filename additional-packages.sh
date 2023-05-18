@@ -21,27 +21,38 @@ install_software() {
 }
 
 #installing packages for better usability
+#dunst: for notifications
 #grim, slurp and swappy: for screenshots
 #fuzzel: fuzzy app launcher
 #wlogout: logout screen
 #hyprpaper: for backgrounds
 #copyq: for clipboard
 #pavucontrol: audio
-#pamixer: audio notifications
 #xdg-user-dir: user directories(downloads, pictures, ...)
-#pamixer: pulseaudio command line mixer
-
-
-#not used:
-#gvfs: Virtual filesystem implementation for GIO
-#thunar-archive-plugin: Adds archive operations to the Thunar file context menus
-#file-roller: Create and modify archives
 
 echo "installing additional packages"
-for SOFTWR in grim slurp swappy fuzzel wlogout hyprpaper copyq pavucontrol pamixer xdg-user-dirs
+for SOFTWR in dunst grim slurp swappy fuzzel wlogout pavucontrol xdg-user-dirs
 do
        install_software $SOFTWR 
 done
 
 #copy dots
 sudo cp -R additional-dots/alacritty ~/.config/
+
+
+
+#additional packages one might install:
+#hyprpaper: background
+#thunar/vifm/ranger/lf/nnn: file manager 
+#thunar-archive-plugin: Adds archive operations to the Thunar file context menus
+#file-roller: Create and modify archives
+#waybar/ironbar/gbar: status bar
+#install rustup: https://rustup.rs/
+#nwg-look: for gtk settings
+#swayimg: image viewer for wayland
+#swaylock-effects: login effects
+#
+#
+#IF YOU HAVE SOME PROBLEMS WITH NVIDIA AND QT OR ELECTRON APPS:
+#for qt: qt5-wayland qt5ct 
+#fixing electron crashin: nvidia-vaapi-driver-git

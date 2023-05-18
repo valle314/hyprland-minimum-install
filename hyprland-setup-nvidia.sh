@@ -32,7 +32,7 @@ install_software() {
 
 #setup nvidia
 echo -e "nvidia setup stage"
-for SOFTWR in linux-headers nvidia-dkms nvidia-settings qt5-wayland qt5ct libva libva-nvidia-driver-git nvidia-utils pipewire wireplumber
+for SOFTWR in linux-headers nvidia-dkms nvidia-settings libva libva-nvidia-driver-git nvidia-utils pipewire wireplumber
 do
     install_software $SOFTWR
 done

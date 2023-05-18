@@ -22,7 +22,7 @@ install_software() {
 
 #install all dependencies for hyprland
 echo -e "installing dependencies for hyprland"
-for SOFTWR in gdb ninja gcc cmake meson libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info xdg-desktop-portal-hyprland-git qt6-wayland 
+for SOFTWR in gdb ninja gcc cmake meson libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info xdg-desktop-portal-hyprland-git 
 do
        install_software $SOFTWR 
 done
@@ -60,7 +60,7 @@ sleep 2
 
 #installing essential packages
 echo "installing must haves"
-for SOFTWR in alacritty jq mako sddm-git polkit-kde-agent
+for SOFTWR in alacritty sddm-git polkit-kde-agent
 do
        install_software $SOFTWR 
 done
