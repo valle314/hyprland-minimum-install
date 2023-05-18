@@ -38,7 +38,8 @@ done
 
 #copy dots
 sudo cp -R additional-dots/alacritty ~/.config/
-
+sudo cp -R additional-dots/fuzzel ~/.config/
+sudo cp -R additional-dots/wallpaper ~/Downloads/
 
 
 #additional packages one might install:
@@ -50,7 +51,9 @@ sudo cp -R additional-dots/alacritty ~/.config/
 #install rustup: https://rustup.rs/
 #nwg-look: for gtk settings
 #swayimg: image viewer for wayland
+#mpv: video player
 #swaylock-effects: login effects
+#udiskie: automatic mounting
 #
 #
 #IF YOU HAVE SOME PROBLEMS WITH NVIDIA AND QT OR ELECTRON APPS:
