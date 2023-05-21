@@ -38,11 +38,11 @@ git clone --recursive https://github.com/hyprwm/Hyprland
 sudo rm Hyprland/subprojects/wlroots/render/gles2/renderer.c
 sudo rm Hyprland/subprojects/wlroots/types/output/render.c
 
-sudo cp -R wlrootspatch/renderer.c Hyprland/subprojects/wlroots/render/gles2/
-sudo cp -R wlrootspatch/render.c Hyprland/subprojects/wlroots/types/output/
+cp -R wlrootspatch/renderer.c Hyprland/subprojects/wlroots/render/gles2/
+cp -R wlrootspatch/render.c Hyprland/subprojects/wlroots/types/output/
 
 cd Hyprland
-sudo make install
+make install
 
 echo "copy files and configs"
 sudo cp -R build/Hyprland /usr/bin/
@@ -51,16 +51,16 @@ sudo cp -R subprojects/wlroots/build/libwlroots.so.12032 /usr/lib/
 cd ..
 
 sudo mkdir /usr/share/wayland-sessions/
-sudo mkdir ~/.config/hypr/
+mkdir ~/.config/hypr/
 sudo cp -R hypr/hyprland.desktop /usr/share/wayland-sessions/
-sudo cp -R hypr/hyprland.conf ~/.config/hypr/
-sudo cp -R hypr/xdg-portal-hyprland ~/.config/hypr/
+cp -R hypr/hyprland.conf ~/.config/hypr/
+cp -R hypr/xdg-portal-hyprland ~/.config/hypr/
 echo "done with copy"
 sleep 2
 
 #installing essential packages
 echo "installing must haves"
-for SOFTWR in alacritty sddm-git polkit-kde-agent
+for SOFTWR in alacritty polkit-kde-agent
 do
        install_software $SOFTWR 
 done
@@ -81,8 +81,8 @@ do
 done
 
 #enable the sddm login manager service
-echo "enabling the SDDM service"
-sudo systemctl enable sddm 
-sleep 2
+# echo "enabling the SDDM service"
+# sudo systemctl enable sddm 
+# sleep 2
 
 echo "done!"

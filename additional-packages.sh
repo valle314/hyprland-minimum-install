@@ -23,29 +23,25 @@ install_software() {
 #installing packages for better usability
 #dunst: for notifications
 #grim, slurp and swappy: for screenshots
-#fuzzel: fuzzy app launcher
 #wlogout: logout screen
 #hyprpaper: for backgrounds
 #copyq: for clipboard
 #pavucontrol: audio
 #xdg-user-dir: user directories(downloads, pictures, ...)
+#hyprpaper: background
 
 echo "installing additional packages"
-for SOFTWR in dunst grim slurp swappy fuzzel wlogout pavucontrol xdg-user-dirs
+for SOFTWR in dunst grim slurp swappy wlogout pavucontrol xdg-user-dirs hyprpaper
 do
        install_software $SOFTWR 
 done
 
-#copy dots
-sudo cp -R additional-dots/alacritty ~/.config/
-sudo cp -R additional-dots/fuzzel ~/.config/
-sudo cp -R additional-dots/wallpaper ~/Downloads/
-
+cp -R wallpaper/Wolf.jpg ~/Downloads/
 
 #additional packages one might install:
-#hyprpaper: background
 #thunar/vifm/ranger/lf/nnn: file manager 
 #thunar-archive-plugin: Adds archive operations to the Thunar file context menus
+#gvfs:virtual file system
 #file-roller: Create and modify archives
 #waybar/ironbar/gbar: status bar
 #install rustup: https://rustup.rs/
@@ -54,6 +50,11 @@ sudo cp -R additional-dots/wallpaper ~/Downloads/
 #mpv: video player
 #swaylock-effects: login effects
 #udiskie: automatic mounting
+#
+#and so on..
+#https://suckless.org/rocks/
+#https://github.com/natpen/awesome-wayland
+#
 #
 #
 #IF YOU HAVE SOME PROBLEMS WITH NVIDIA AND QT OR ELECTRON APPS:
