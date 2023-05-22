@@ -36,3 +36,5 @@ for SOFTWR in linux-headers nvidia-dkms nvidia-settings libva libva-nvidia-drive
 do
     install_software $SOFTWR
 done
+
+echo "now run the configure-nvidia script"

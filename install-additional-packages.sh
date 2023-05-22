@@ -39,6 +39,11 @@ done
 mkdir -p ~/Downloads
 cp -R wallpaper/Wolf.jpg ~/Downloads/
 
+mkdir -p ~/.config/hypr/
+cp -R hypr/hyprpaper.conf ~/.config/hypr/
+
+echo "done!"
+
 #additional packages one might install:
 #thunar/vifm/ranger/lf/nnn: file manager 
 #thunar-archive-plugin: Adds archive operations to the Thunar file context menus

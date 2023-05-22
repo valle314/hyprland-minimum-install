@@ -21,4 +21,5 @@ echo "restarting networkManager service..."
 sleep 1
 sudo systemctl restart NetworkManager 
 
-echo "reboot and run the installation script"
+echo "reboot and run the build-hyprland script"
+
