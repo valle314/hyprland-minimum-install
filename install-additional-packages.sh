@@ -23,19 +23,20 @@ install_software() {
 #installing packages for better usability
 #dunst: for notifications
 #grim, slurp and swappy: for screenshots
-#wlogout: logout screen
 #hyprpaper: for backgrounds
 #copyq: for clipboard
 #pavucontrol: audio
 #xdg-user-dir: user directories(downloads, pictures, ...)
 #hyprpaper: background
+#wlogout: logout screen
 
 echo "installing additional packages"
-for SOFTWR in dunst grim slurp swappy wlogout pavucontrol xdg-user-dirs hyprpaper
+for SOFTWR in dunst grim slurp swappy pavucontrol xdg-user-dirs hyprpaper wlogout 
 do
        install_software $SOFTWR 
 done
 
+mkdir -p ~/Downloads
 cp -R wallpaper/Wolf.jpg ~/Downloads/
 
 #additional packages one might install:
@@ -50,6 +51,8 @@ cp -R wallpaper/Wolf.jpg ~/Downloads/
 #mpv: video player
 #swaylock-effects: login effects
 #udiskie: automatic mounting
+#
+#
 #
 #and so on..
 #https://suckless.org/rocks/

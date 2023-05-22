@@ -19,20 +19,7 @@ install_software() {
     fi
 }
 
-
-for SOFTWR in cmake meson scdoc wayland-protocols gtkmm3 jsoncpp libsigc++ fmt wayland chrono-date spdlog gtk3 gobject-introspection libgirepository libpulse libnl libappindicator-gtk3 libdbusmenu-gtk3 fftw libmpdclient libxkbcommon
+for SOFTWR in waybar-hyprland-git
 do
        install_software $SOFTWR 
 done
-
-sudo rm -rf ~/.config/waybar/
-cp -r waybar/ ~/.config/
-
-git clone https://github.com/Alexays/Waybar
-cd Waybar
-
-sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
-meson --prefix=/usr --buildtype=plain --auto-features=enabled --wrap-mode=nodownload build
-meson configure -Dexperimental=true build
-meson build
-ninja -C build install
